@@ -1,0 +1,23 @@
+# Site settings
+title: Neptune Navigators
+description: AI-powered autonomous inspection systems for critical infrastructure
+email: neptunenavigators@gmail.com
+baseurl: ""
+url: "https://neptunenavigators.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# SEO
+author: Neptune Navigators Team
+twitter_username: 
+github_username: neptunenavigators
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
