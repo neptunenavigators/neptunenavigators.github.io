@@ -37,6 +37,57 @@ layout: default
   </div>
 </section>
 
+<section class="demo">
+  <div class="container">
+    <h2>Technology Demo</h2>
+    
+    <h3>AI-Powered Detection Pipeline</h3>
+    <p>See our computer vision system in action - detecting anomalies and tracking infrastructure in real-time.</p>
+    
+    <div class="video-grid">
+      <div class="video-wrapper">
+        <h4>Raw Camera Feed</h4>
+        <video autoplay loop muted playsinline>
+          <source src="assets/videos/mix_540p_h264.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="video-wrapper">
+        <h4>AI Analysis + Detection</h4>
+        <video autoplay loop muted playsinline>
+          <source src="assets/videos/mix_render_540p_h264.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    
+    <h3 style="margin-top: 60px;">Interactive 3D Port Model</h3>
+    <p>Explore a digital twin of port infrastructure - rotate, zoom, and inspect the 3D reconstruction generated from drone footage.</p>
+    
+    <div class="model-viewer-wrapper">
+      <model-viewer 
+        src="assets/models/port.glb" 
+        alt="3D model of port infrastructure"
+        auto-rotate 
+        camera-controls 
+        shadow-intensity="1"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        environment-image="neutral"
+        exposure="1"
+        shadow-softness="0.5">
+        
+        <div class="model-loading" slot="poster">
+          <p>Loading 3D model...</p>
+        </div>
+        
+        <div class="model-controls">
+          <p>🖱️ Drag to rotate • Scroll to zoom • Right-click to pan</p>
+        </div>
+      </model-viewer>
+    </div>
+  </div>
+</section>
+
 <section class="harris">
   <div class="container">
     <h2>HARRIS System</h2>
