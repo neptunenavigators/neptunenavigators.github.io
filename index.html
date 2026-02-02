@@ -2,170 +2,158 @@
 layout: default
 ---
 
-<section class="hero">
+<section class="hero reveal">
   <div class="container">
     <h1>Neptune Navigators</h1>
-    <p class="tagline">AI-Powered Autonomous Inspection for Critical Infrastructure</p>
+    <p class="tagline">AI-Powered Autonomous Inspection for Critical Infrastructure. Revolutionizing ports and railways
+      with high-precision digital twins.</p>
   </div>
 </section>
 
-<section class="about">
+<section class="visualizations-spotlight reveal">
+  <div class="container">
+    <h2>Technology Visualizations</h2>
+
+    <div class="spotlight-grid">
+      <!-- 3D Reconstruction Spotlight -->
+      <div class="spotlight-item">
+        <div class="spotlight-content">
+          <h3>Interactive Digital Twin</h3>
+          <p>Explore a high-fidelity 3D reconstruction generated from autonomous drone footage. Rotate and zoom to
+            inspect port infrastructure with millimeter precision.</p>
+        </div>
+        <div class="spotlight-visual">
+          <model-viewer src="assets/models/port.glb" alt="3D model of port infrastructure" auto-rotate camera-controls
+            shadow-intensity="1" ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral" exposure="1"
+            shadow-softness="0.5">
+            <div class="model-loading" slot="poster">
+              <p>Initializing 3D Environment...</p>
+            </div>
+            <div class="model-controls">
+              🖱️ Drag to rotate • Scroll to zoom
+            </div>
+          </model-viewer>
+        </div>
+      </div>
+
+      <!-- AI Detection Spotlight -->
+      <div class="spotlight-item">
+        <div class="spotlight-visual">
+          <div class="video-comparison">
+            <video autoplay loop muted playsinline>
+              <source src="assets/videos/mix_540p_h264.mp4" type="video/mp4">
+            </video>
+            <video autoplay loop muted playsinline>
+              <source src="assets/videos/mix_render_540p_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="spotlight-content">
+          <h3>AI-Powered Detection</h3>
+          <p>Real-time anomaly detection and infrastructure tracking. Our HARRIS system processes raw camera feeds to
+            identify defects and obstacles with superhuman accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about reveal">
   <div class="container">
     <h2>What We Do</h2>
     <p>
-      We develop cutting-edge AI systems that automate infrastructure inspection using autonomous drones 
-      and deep learning. Our flagship product, <strong>HARRIS</strong> (High-precision Autonomous Railway 
-      & Rail-track Inspection System), revolutionizes how ports and railways maintain their critical infrastructure.
+      We build the future of infrastructure maintenance. Using autonomous UAVs and edge-optimized AI,
+      we provide end-to-end inspection solutions for the world's most critical logistics hubs.
     </p>
-    
+
     <div class="features">
       <div class="feature">
-        <h3>🚁 Autonomous UAV Inspection</h3>
-        <p>Enterprise-grade drones with RGB, thermal imaging, and RTK positioning</p>
+        <h3>🚁 Autonomous UAV</h3>
+        <p>Enterprise drones with RGB and thermal imaging, powered by RTK for centimeter-level accuracy.</p>
       </div>
-      
+
       <div class="feature">
-        <h3>🧠 AI-Powered Detection</h3>
-        <p>Deep learning models detect defects, obstacles, and anomalies in real-time</p>
+        <h3>🧠 Edge AI</h3>
+        <p>Real-time deep learning models deployed on Jetson hardware for immediate anomaly detection.</p>
       </div>
-      
+
       <div class="feature">
-        <h3>🗺️ Digital Twin Technology</h3>
-        <p>3D reconstruction and interactive mapping of entire infrastructure networks</p>
+        <h3>🗺️ Digital Twins</h3>
+        <p>Automated 3D mapping and historical data analysis for predictive maintenance strategies.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="demo">
-  <div class="container">
-    <h2>Technology Demo</h2>
-    
-    <h3>AI-Powered Detection Pipeline</h3>
-    <p>See our computer vision system in action - detecting anomalies and tracking infrastructure in real-time.</p>
-    
-    <div class="video-grid">
-      <div class="video-wrapper">
-        <h4>Raw Camera Feed</h4>
-        <video autoplay loop muted playsinline>
-          <source src="assets/videos/mix_540p_h264.mp4" type="video/mp4">
-        </video>
-      </div>
-      
-      <div class="video-wrapper">
-        <h4>AI Analysis + Detection</h4>
-        <video autoplay loop muted playsinline>
-          <source src="assets/videos/mix_render_540p_h264.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-    
-    <h3 style="margin-top: 60px;">Interactive 3D Port Model</h3>
-    <p>Explore a digital twin of port infrastructure - rotate, zoom, and inspect the 3D reconstruction generated from drone footage.</p>
-    
-    <div class="model-viewer-wrapper">
-      <model-viewer 
-        src="assets/models/port.glb" 
-        alt="3D model of port infrastructure"
-        auto-rotate 
-        camera-controls 
-        shadow-intensity="1"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        environment-image="neutral"
-        exposure="1"
-        shadow-softness="0.5">
-        
-        <div class="model-loading" slot="poster">
-          <p>Loading 3D model...</p>
-        </div>
-        
-        <div class="model-controls">
-          <p>🖱️ Drag to rotate • Scroll to zoom • Right-click to pan</p>
-        </div>
-      </model-viewer>
-    </div>
-  </div>
-</section>
-
-<section class="harris">
+<section class="harris reveal">
   <div class="container">
     <h2>HARRIS System</h2>
-    <p>
-      Our autonomous inspection platform combines computer vision, thermal analysis, and 3D mapping 
-      to detect railway track anomalies before they cause operational disruptions.
+    <p>Our High-precision Autonomous Railway & Rail-track Inspection System (HARRIS) is setting new industry standards.
     </p>
-    
+
     <ul class="benefits">
-      <li><strong>60% cost reduction</strong> compared to manual inspection</li>
-      <li><strong>95% faster</strong> defect detection</li>
-      <li><strong>24/7 monitoring</strong> capability</li>
-      <li><strong>Predictive maintenance</strong> through historical data analysis</li>
+      <li><strong>60% Cost Reduction</strong> vs manual inspection</li>
+      <li><strong>95% Faster</strong> defect detection rates</li>
+      <li><strong>24/7 Monitoring</strong> capabilities</li>
+      <li><strong>Predictive Maintenance</strong> through AI analytics</li>
     </ul>
-    
-    <p class="pilot-info">
-      Currently piloting with <strong>Port Gdynia</strong> for railway and crane track inspection.
-    </p>
+
+    <div class="pilot-info">
+      Currently piloting with <strong>Port Gdynia</strong> for advanced railway and crane track inspection.
+    </div>
   </div>
 </section>
 
-<section class="team">
+<section class="team reveal">
   <div class="container">
     <h2>Our Team</h2>
-    <p>Founded by three AI/ML engineers with expertise in signal processing, computer vision, and production machine learning systems.</p>
-    
     <div class="team-grid">
       <div class="team-member">
-        <h3>Krzysztof Bork-Ceszlak</h3>
         <p class="role">AI Product Manager & Co-founder</p>
-        <p>M.Sc. Electrical Engineering (Signal Processing), Blekinge Tekniska Högskola</p>
-        <p>15+ team leadership, edge AI deployment, licensed FPV drone pilot</p>
+        <h3>Krzysztof Bork-Ceszlak</h3>
+        <p>M.Sc. Electrical Engineering. Edge AI deployment expert and licensed FPV pilot.</p>
       </div>
-      
+
       <div class="team-member">
-        <h3>Marek Hering</h3>
         <p class="role">AI Engineer & Co-founder</p>
-        <p>M.Sc. Computer Science, Politechnika Gdańska</p>
-        <p>LLM systems, warehouse optimization, 3+ peer-reviewed ML publications</p>
+        <h3>Marek Hering</h3>
+        <p>M.Sc. Computer Science. Specialist in LLMs and warehouse optimization systems.</p>
       </div>
-      
+
       <div class="team-member">
-        <h3>Paweł Potrykus</h3>
         <p class="role">Staff ML Engineer & Co-founder</p>
-        <p>M.Sc. Nuclear Energy & Chemistry, Uniwersytet Warszawski</p>
-        <p>Tech Lead, Jetson edge optimization, real-time computer vision</p>
+        <h3>Paweł Potrykus</h3>
+        <p>M.Sc. Nuclear Energy & Chemistry. Tech Lead focused on Jetson edge optimization.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="traction">
+<section class="traction reveal">
   <div class="container">
     <h2>Traction</h2>
     <ul>
-      <li>🥉 <strong>3rd place</strong> at Gdańsk Startup Hack 2025</li>
-      <li>🚀 Accepted to <strong>Strefa Akceleracji</strong> accelerator program</li>
-      <li>🤝 Active pilot project with <strong>Port Gdynia</strong></li>
-      <li>📊 400,000 PLN non-dilutive grant secured</li>
+      <li>🥉 3rd place at Gdańsk Startup Hack 2025</li>
+      <li>🚀 Strefa Akceleracji Program</li>
+      <li>🤝 Pilot with Port Gdynia</li>
+      <li>📊 400k PLN Grant Secured</li>
     </ul>
   </div>
 </section>
 
-<section class="contact">
+<section class="contact reveal">
   <div class="container">
     <h2>Get In Touch</h2>
-    <p>Interested in autonomous infrastructure inspection? Let's talk.</p>
+    <p>Ready to automate your infrastructure inspection?</p>
     <p class="contact-info">
-      <strong>Email:</strong> <a href="mailto:neptunenavigators@gmail.com">neptunenavigators@gmail.com</a><br>
-      <strong>Phone:</strong> +48 785 068 382<br>
-      <strong>Location:</strong> Gdańsk, Poland
+      <a href="mailto:neptunenavigators@gmail.com">neptunenavigators@gmail.com</a><br>
+      Gdańsk, Poland
     </p>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>&copy; 2025 Neptune Navigators. All rights reserved.</p>
-    <p class="credit">Site built with assistance from <a href="https://clawd.bot" target="_blank">Clawdbot AI</a></p>
+    <p>&copy; 2025 Neptune Navigators. Premium AI Solutions.</p>
   </div>
 </footer>

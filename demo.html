@@ -1,529 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AI-powered autonomous inspection systems for critical infrastructure">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Neptune Navigators">
+  <meta property="og:description" content="AI-Powered Autonomous Inspection for Critical Infrastructure">
+  <meta property="og:type" content="website">
+
   <title>Neptune Navigators - Demo Preview</title>
-  
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;800&display=swap"
+    rel="stylesheet">
+
   <!-- Model Viewer for 3D GLB files -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-  
+
   <style>
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    :root {
+      --bg-color: #05080f;
+      --surface-color: #0d121d;
+      --surface-hover: #161c2b;
+      --primary: #00f5ff;
+      --primary-glow: rgba(0, 245, 255, 0.3);
+      --secondary: #7000ff;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #fbbf24;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: blur(12px);
+      --container-max: 1200px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #fff;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-h1, h2, h3 {
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-}
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-}
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
 
-h3 {
-  font-size: 1.3rem;
-  color: #34495e;
-}
+    h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-h4 {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
 
-a {
-  color: #3498db;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
 
-a:hover {
-  color: #2980b9;
-  text-decoration: underline;
-}
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
 
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
-}
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
 
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-}
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
 
-.tagline {
-  font-size: 1.5rem;
-  font-weight: 300;
-  max-width: 800px;
-  margin: 0 auto;
-}
+    /* Hero Section */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 120px 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 245, 255, 0.05) 0%, transparent 50%);
+    }
 
-/* Sections */
-section {
-  padding: 80px 20px;
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
 
-section:nth-child(even) {
-  background: #f8f9fa;
-}
+    .tagline {
+      font-size: 1.5rem;
+      max-width: 650px;
+      margin: 0;
+    }
 
-/* Features Grid */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
+    section {
+      padding: 100px 0;
+    }
 
-.feature {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    /* Features/About Section */
+    .about {
+      background: var(--surface-color);
+    }
 
-.feature:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
 
-/* Demo Section */
-.demo {
-  background: #f8f9fa;
-}
+    .feature {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: var(--transition);
+    }
 
-.demo h3 {
-  margin-top: 40px;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
+    .feature:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--primary);
+      box-shadow: 0 0 30px var(--primary-glow);
+    }
 
-.demo p {
-  margin-bottom: 2rem;
-  font-size: 1.05rem;
-  color: #555;
-}
+    /* Visualization Spotlight */
+    .visualizations-spotlight {
+      background: var(--bg-color);
+      position: relative;
+    }
 
-/* Video Grid */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  margin: 40px 0;
-}
+    .spotlight-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      margin-top: 3rem;
+    }
 
-.video-wrapper {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    .spotlight-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
 
-.video-wrapper h4 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #2c3e50;
-}
+    .spotlight-item.video-hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
 
-.video-wrapper video {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  display: block;
-}
+    .spotlight-item.video-hero .spotlight-content {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
 
-/* 3D Model Viewer */
-.model-viewer-wrapper {
-  margin: 40px 0;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    @media (max-width: 968px) {
+      .spotlight-item {
+        grid-template-columns: 1fr;
+      }
+    }
 
-model-viewer {
-  width: 100%;
-  height: 600px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-}
+    .spotlight-content h3 {
+      font-size: 2rem;
+      color: var(--text-primary);
+    }
 
-.model-loading {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-}
+    .spotlight-content p {
+      font-size: 1.2rem;
+    }
 
-.model-loading p {
-  font-size: 1.2rem;
-  color: #555;
-}
+    .spotlight-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      background: var(--surface-color);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
 
-.model-controls {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
+    .spotlight-visual.video-large {
+      width: 80vw;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-/* HARRIS Section */
-.harris {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-}
+    /* Video Styling */
+    .video-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: #000;
+      padding: 12px;
+    }
 
-.benefits {
-  list-style: none;
-  margin: 30px 0;
-  padding: 0;
-}
+    .video-comparison video {
+      width: 100%;
+      border-radius: 16px;
+    }
 
-.benefits li {
-  padding: 15px;
-  margin: 10px 0;
-  background: white;
-  border-left: 4px solid #3498db;
-  border-radius: 4px;
-  font-size: 1.1rem;
-}
+    /* Model Viewer Styling */
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      background: radial-gradient(circle at center, #1a2233 0%, #0d121d 100%);
+    }
 
-.pilot-info {
-  margin-top: 30px;
-  padding: 20px;
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
-  border-radius: 4px;
-  font-size: 1.1rem;
-}
+    .model-controls {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: #fff;
+      white-space: nowrap;
+    }
 
-/* Team Grid */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
+    /* System Stats / Benefits */
+    .harris {
+      background: var(--surface-color);
+    }
 
-.team-member {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    .benefits {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
 
-.team-member h3 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
+    .benefits li {
+      background: var(--glass-bg);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border-left: 4px solid var(--primary);
+    }
 
-.role {
-  color: #3498db;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
+    .pilot-info {
+      background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 0 16px 16px 0;
+      color: var(--accent);
+    }
 
-.team-member p {
-  margin-bottom: 0.5rem;
-  color: #555;
-  font-size: 0.95rem;
-}
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
 
-/* Traction Section */
-.traction ul {
-  list-style: none;
-  margin-top: 30px;
-}
+    .team-member {
+      background: var(--glass-bg);
+      padding: 2.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
 
-.traction li {
-  padding: 15px 20px;
-  margin: 10px 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  font-size: 1.1rem;
-}
+    .team-member:hover {
+      background: var(--surface-hover);
+      border-color: var(--secondary);
+    }
 
-/* Contact Section */
-.contact {
-  text-align: center;
-  background: #f8f9fa;
-}
+    .role {
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+    }
 
-.contact-info {
-  font-size: 1.1rem;
-  margin-top: 30px;
-  line-height: 2;
-}
+    /* Traction Section */
+    .traction ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
 
-/* Footer */
-footer {
-  background: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 30px 20px;
-}
+    .traction li {
+      background: var(--surface-color);
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      border: 1px solid var(--glass-border);
+      font-weight: 500;
+    }
 
-footer a {
-  color: #3498db;
-}
+    /* Footer & Contact */
+    .contact {
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-color), #000);
+    }
 
-footer .credit {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
+    .contact a {
+      color: var(--primary);
+      text-decoration: none;
+    }
 
-/* Preview Banner */
-.preview-banner {
-  background: #ffc107;
-  color: #000;
-  text-align: center;
-  padding: 10px;
-  font-weight: 600;
-}
+    footer {
+      padding: 4rem 0;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+      font-size: 0.9rem;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .tagline {
-    font-size: 1.2rem;
-  }
-  
-  section {
-    padding: 50px 20px;
-  }
-  
-  .features,
-  .team-grid,
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  model-viewer {
-    height: 400px;
-  }
-  
-  .model-controls {
-    font-size: 0.75rem;
-    padding: 8px 15px;
-  }
-}
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    /* Preview Banner */
+    .preview-banner {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #000;
+      text-align: center;
+      padding: 12px;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .video-comparison {
+        grid-template-columns: 1fr;
+      }
+
+      model-viewer {
+        height: 350px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="preview-banner">
     🔍 LOCAL PREVIEW - Open this file in your browser to test before deploying
   </div>
 
-  <section class="hero">
+  <section class="hero reveal">
     <div class="container">
       <h1>Neptune Navigators</h1>
-      <p class="tagline">AI-Powered Autonomous Inspection for Critical Infrastructure</p>
+      <p class="tagline">AI-Powered Autonomous Inspection for Critical Infrastructure. Revolutionizing ports and
+        railways with high-precision digital twins.</p>
     </div>
   </section>
 
-  <section class="about">
+  <section class="visualizations-spotlight reveal">
+    <div class="container">
+      <h2>Technology Visualizations</h2>
+
+      <div class="spotlight-grid">
+        <!-- AI Detection Spotlight (NOW ON TOP) -->
+        <div class="spotlight-item video-hero">
+          <div class="spotlight-content">
+            <h3>AI-Powered Detection</h3>
+            <p>Real-time anomaly detection and infrastructure tracking. Our HARRIS system processes raw camera feeds to
+              identify defects and obstacles with superhuman accuracy.</p>
+          </div>
+          <div class="spotlight-visual video-large">
+            <div class="video-comparison">
+              <video autoplay loop muted playsinline>
+                <source src="assets/videos/mix_540p_h264.mp4" type="video/mp4">
+              </video>
+              <video autoplay loop muted playsinline>
+                <source src="assets/videos/mix_render_540p_h264.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Reconstruction Spotlight -->
+        <div class="spotlight-item">
+          <div class="spotlight-content">
+            <h3>Interactive Digital Twin</h3>
+            <p>Explore a high-fidelity 3D reconstruction generated from autonomous drone footage. Rotate and zoom to
+              inspect port infrastructure with millimeter precision.</p>
+          </div>
+          <div class="spotlight-visual">
+            <model-viewer src="assets/models/port.glb" alt="3D model of port infrastructure" auto-rotate camera-controls
+              shadow-intensity="1" environment-image="neutral" exposure="1.2" shadow-softness="0.5" loading="eager">
+              <div class="model-controls">
+                🖱️ Drag to rotate • Scroll to zoom
+              </div>
+            </model-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about reveal">
     <div class="container">
       <h2>What We Do</h2>
       <p>
-        We develop cutting-edge AI systems that automate infrastructure inspection using autonomous drones 
-        and deep learning. Our flagship product, <strong>HARRIS</strong> (High-precision Autonomous Railway 
-        & Rail-track Inspection System), revolutionizes how ports and railways maintain their critical infrastructure.
+        We build the future of infrastructure maintenance. Using autonomous UAVs and edge-optimized AI,
+        we provide end-to-end inspection solutions for the world's most critical logistics hubs.
       </p>
-      
+
       <div class="features">
         <div class="feature">
-          <h3>🚁 Autonomous UAV Inspection</h3>
-          <p>Enterprise-grade drones with RGB, thermal imaging, and RTK positioning</p>
+          <h3>🚁 Autonomous UAV</h3>
+          <p>Enterprise drones with RGB and thermal imaging, powered by RTK for centimeter-level accuracy.</p>
         </div>
-        
+
         <div class="feature">
-          <h3>🧠 AI-Powered Detection</h3>
-          <p>Deep learning models detect defects, obstacles, and anomalies in real-time</p>
+          <h3>🧠 Edge AI</h3>
+          <p>Real-time deep learning models deployed on Jetson hardware for immediate anomaly detection.</p>
         </div>
-        
+
         <div class="feature">
-          <h3>🗺️ Digital Twin Technology</h3>
-          <p>3D reconstruction and interactive mapping of entire infrastructure networks</p>
+          <h3>🗺️ Digital Twins</h3>
+          <p>Automated 3D mapping and historical data analysis for predictive maintenance strategies.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="demo">
-    <div class="container">
-      <h2>Technology Demo</h2>
-      
-      <h3>AI-Powered Detection Pipeline</h3>
-      <p>See our computer vision system in action - detecting anomalies and tracking infrastructure in real-time.</p>
-      
-      <div class="video-grid">
-        <div class="video-wrapper">
-          <h4>Raw Camera Feed</h4>
-          <video autoplay loop muted playsinline>
-            <source src="assets/videos/mix_540p_h264.mp4" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="video-wrapper">
-          <h4>AI Analysis + Detection</h4>
-          <video autoplay loop muted playsinline>
-            <source src="assets/videos/mix_render_540p_h264.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      
-      <h3 style="margin-top: 60px;">Interactive 3D Port Model</h3>
-      <p>Explore a digital twin of port infrastructure - rotate, zoom, and inspect the 3D reconstruction generated from drone footage.</p>
-      
-      <div class="model-viewer-wrapper">
-        <model-viewer 
-          src="assets/models/port.glb" 
-          alt="3D model of port infrastructure"
-          auto-rotate 
-          camera-controls 
-          shadow-intensity="1"
-          ar
-          ar-modes="webxr scene-viewer quick-look"
-          environment-image="neutral"
-          exposure="1"
-          shadow-softness="0.5">
-          
-          <div class="model-loading" slot="poster">
-            <p>Loading 3D model...</p>
-          </div>
-          
-          <div class="model-controls">
-            <p>🖱️ Drag to rotate • Scroll to zoom • Right-click to pan</p>
-          </div>
-        </model-viewer>
-      </div>
-    </div>
-  </section>
-
-  <section class="harris">
+  <section class="harris reveal">
     <div class="container">
       <h2>HARRIS System</h2>
-      <p>
-        Our autonomous inspection platform combines computer vision, thermal analysis, and 3D mapping 
-        to detect railway track anomalies before they cause operational disruptions.
-      </p>
-      
+      <p>Our High-precision Autonomous Railway & Rail-track Inspection System (HARRIS) is setting new industry
+        standards.</p>
+
       <ul class="benefits">
-        <li><strong>60% cost reduction</strong> compared to manual inspection</li>
-        <li><strong>95% faster</strong> defect detection</li>
-        <li><strong>24/7 monitoring</strong> capability</li>
-        <li><strong>Predictive maintenance</strong> through historical data analysis</li>
+        <li><strong>60% Cost Reduction</strong> vs manual inspection</li>
+        <li><strong>95% Faster</strong> defect detection rates</li>
+        <li><strong>24/7 Monitoring</strong> capabilities</li>
+        <li><strong>Predictive Maintenance</strong> through AI analytics</li>
       </ul>
-      
-      <p class="pilot-info">
-        Currently piloting with <strong>Port Gdynia</strong> for railway and crane track inspection.
-      </p>
+
+      <div class="pilot-info">
+        Currently piloting with <strong>Port Gdynia</strong> for advanced railway and crane track inspection.
+      </div>
     </div>
   </section>
 
-  <section class="team">
+  <section class="team reveal">
     <div class="container">
       <h2>Our Team</h2>
-      <p>Founded by three AI/ML engineers with expertise in signal processing, computer vision, and production machine learning systems.</p>
-      
       <div class="team-grid">
         <div class="team-member">
-          <h3>Krzysztof Bork-Ceszlak</h3>
           <p class="role">AI Product Manager & Co-founder</p>
-          <p>M.Sc. Electrical Engineering (Signal Processing), Blekinge Tekniska Högskola</p>
-          <p>15+ team leadership, edge AI deployment, licensed FPV drone pilot</p>
+          <h3>Krzysztof Bork-Ceszlak</h3>
+          <p>M.Sc. Electrical Engineering. Edge AI deployment expert and licensed FPV pilot.</p>
         </div>
-        
+
         <div class="team-member">
-          <h3>Marek Hering</h3>
           <p class="role">AI Engineer & Co-founder</p>
-          <p>M.Sc. Computer Science, Politechnika Gdańska</p>
-          <p>LLM systems, warehouse optimization, 3+ peer-reviewed ML publications</p>
+          <h3>Marek Hering</h3>
+          <p>M.Sc. Computer Science. Specialist in LLMs and warehouse optimization systems.</p>
         </div>
-        
+
         <div class="team-member">
-          <h3>Paweł Potrykus</h3>
           <p class="role">Staff ML Engineer & Co-founder</p>
-          <p>M.Sc. Nuclear Energy & Chemistry, Uniwersytet Warszawski</p>
-          <p>Tech Lead, Jetson edge optimization, real-time computer vision</p>
+          <h3>Paweł Potrykus</h3>
+          <p>M.Sc. Nuclear Energy & Chemistry. Tech Lead focused on Jetson edge optimization.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="traction">
+  <section class="traction reveal">
     <div class="container">
       <h2>Traction</h2>
       <ul>
-        <li>🥉 <strong>3rd place</strong> at Gdańsk Startup Hack 2025</li>
-        <li>🚀 Accepted to <strong>Strefa Akceleracji</strong> accelerator program</li>
-        <li>🤝 Active pilot project with <strong>Port Gdynia</strong></li>
-        <li>📊 400,000 PLN non-dilutive grant secured</li>
+        <li>🥉 3rd place at Gdańsk Startup Hack 2025</li>
+        <li>🚀 Strefa Akceleracji Program</li>
+        <li>🤝 Pilot with Port Gdynia</li>
+        <li>📊 400k PLN Grant Secured</li>
       </ul>
     </div>
   </section>
 
-  <section class="contact">
+  <section class="contact reveal">
     <div class="container">
       <h2>Get In Touch</h2>
-      <p>Interested in autonomous infrastructure inspection? Let's talk.</p>
+      <p>Ready to automate your infrastructure inspection?</p>
       <p class="contact-info">
-        <strong>Email:</strong> <a href="mailto:neptunenavigators@gmail.com">neptunenavigators@gmail.com</a><br>
-        <strong>Phone:</strong> +48 785 068 382<br>
-        <strong>Location:</strong> Gdańsk, Poland
+        <a href="mailto:neptunenavigators@gmail.com">neptunenavigators@gmail.com</a><br>
+        Gdańsk, Poland
       </p>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Neptune Navigators. All rights reserved.</p>
-      <p class="credit">Site built with assistance from <a href="https://clawd.bot" target="_blank">Clawdbot AI</a></p>
+      <p>&copy; 2025 Neptune Navigators. Premium AI Solutions.</p>
     </div>
   </footer>
 </body>
+
 </html>
